@@ -12,24 +12,24 @@ public class Product {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
-    private long id;
-    @Column(name = "name")
+    private Long id;
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
-    @Column(name = "salary")
+    @Column(name = "salary", nullable = false)
     private float salary;
-    @Column(name = "producer")
+    @Column(name = "producer", nullable = false, length = 50)
     private String producer;
-    @Column(name = "description")
+    @Column(name = "description", nullable = true, length = 500)
     private String description;
 
     public Product() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

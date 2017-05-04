@@ -36,7 +36,7 @@ public class ProductController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("/remove/{id}")
-    public String removeProduct(@PathVariable("id") int id) {
+    public String removeProduct(@PathVariable("id") Long id) {
         this.productService.removeProduct(id);
 
         return "redirect:/products";
@@ -44,15 +44,15 @@ public class ProductController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("edit/{id}")
-    public String editProduct(@PathVariable("id") int id, Model model) {
+    public String editProduct(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", this.productService.getProductById(id));
         model.addAttribute("listProducts", this.productService.listProducts());
 
         return "products";
     }
 
-    @RequestMapping("productdata/{id}")
-    public String productData(@PathVariable("id") int id, Model model) {
+    @RequestMapping(value = "productdata/{id}", method = RequestMethod.GET)
+    public String productData(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", this.productService.getProductById(id));
 
         return "productdata";
